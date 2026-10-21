@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050807">
+
+<title>GRUPWA 3D | Official Community</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #050807;
+  --green: #00efa3;
+  --gold: #d8ffea;
+  --text: #f4fff9;
+  --muted: #94a69b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 0%, #06452e 0%, transparent 45%),
+    #050807;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* NAVBAR */
+
+nav {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7%;
+  border-bottom: 1px solid #ffffff10;
+  background: #050807b8;
+  backdrop-filter: blur(20px);
+  position: relative;
+  z-index: 5;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--green);
+}
+
+.nav-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 650px;
+  padding: 70px 7% 55px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 35px;
+  max-width: 1350px;
+  margin: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  padding: 10px 15px;
+  border: 1px solid #00efa340;
+  border-radius: 50px;
+  color: var(--green);
+  font-size: 10px;
+  letter-spacing: 2px;
+  background: #00efa30a;
+}
+
+.eyebrow i {
+  width: 7px;
+  height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--green);
+}
+
+h1 {
+  font-size: clamp(42px, 5.5vw, 72px);
+  line-height: 1.08;
+  letter-spacing: -3px;
+  margin: 28px 0 22px;
+  font-weight: 900;
+}
+
+.gradient {
+  background: linear-gradient(100deg, #ffffff, #8affca, #00efa3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.description {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 13px;
+  max-width: 480px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn {
+  padding: 15px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  transition: .3s;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, #a8ffda, #00e89b);
+  color: #002516;
+  box-shadow: 0 10px 35px #00efa328;
+}
+
+.btn-secondary {
+  border: 1px solid #ffffff25;
+  color: white;
+  background: #ffffff05;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 35px;
+  font-size: 10px;
+  color: #c3d2c9;
+}
+
+.features span::first-letter {
+  color: var(--green);
+}
+
+/* 3D LOGO */
+
+.visual {
+  min-height: 390px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  perspective: 1000px;
+}
+
+.orb {
+  width: 260px;
+  height: 260px;
+  border-radius: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  background:
+    radial-gradient(circle at 30% 20%, #8bffd0, transparent 35%),
+    linear-gradient(145deg, #00efa3, #075c3e 60%, #02281a);
+  border: 1px solid #bdffe0a0;
+  box-shadow:
+    inset 0 5px 20px #ffffff60,
+    inset 0 -25px 45px #001b11aa,
+    0 35px 100px #00efa333;
+  transform: rotateY(-15deg) rotateX(8deg);
+  animation: levitate 5s ease-in-out infinite;
+}
+
+.orb::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid #ffffff55;
+  border-radius: 52px;
+}
+
+.orb-symbol {
+  font-size: 100px;
+  filter: drop-shadow(0 12px 12px #003822);
+  transform: translateZ(45px);
+}
+
+.orb-caption {
+  font-size: 9px;
+  letter-spacing: 4px;
+  font-weight: 900;
+  color: #003c28;
+  margin-top: 5px;
+}
+
+.ring {
+  position: absolute;
+  width: 350px;
+  height: 110px;
+  border: 1px solid #00efa355;
+  border-radius: 50%;
+  transform: rotateX(65deg);
+  box-shadow: 0 0 35px #00efa310;
+}
+
+.ring.two {
+  width: 420px;
+  height: 145px;
+  opacity: .5;
+}
+
+.floating {
+  position: absolute;
+  padding: 14px 17px;
+  border: 1px solid #00efa32b;
+  border-radius: 14px;
+  background: #0c1712ed;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 40px #0007;
+  animation: levitate 5s ease-in-out infinite;
+}
+
+.floating strong {
+  font-size: 11px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.floating small {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.floating.one {
+  top: 45px;
+  left: 0;
+}
+
+.floating.two {
+  right: 0;
+  bottom: 35px;
+  animation-delay: -2s;
+}
+
+@keyframes levitate {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -13px; }
+}
+
+/* INTRODUCTION */
+
+.section {
+  max-width: 1100px;
+  width: 86%;
+  margin: 35px auto 80px;
+}
+
+.section-label {
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 13px;
+}
+
+h2 {
+  font-size: 28px;
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+}
+
+.section-description {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.glass {
+  padding: 30px;
+  border-radius: 22px;
+  border: 1px solid #00efa326;
+  background: linear-gradient(140deg, #101c15e8, #080e0bdb);
+  box-shadow: 0 20px 65px #0004;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.info-card {
+  padding: 18px;
+  border: 1px solid #ffffff12;
+  border-radius: 14px;
+  background: #ffffff04;
+}
+
+.info-card .icon {
+  font-size: 25px;
+  margin-bottom: 12px;
+}
+
+.info-card h3 {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.info-card p {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+/* RULES */
+
+.rules {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.rule {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  color: #c4d1c9;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.rule b {
+  color: var(--green);
+  font-size: 14px;
+}
+
+/* JOIN */
+
+.join-section {
+  text-align: center;
+  padding: 50px 25px;
+  border: 1px solid #00efa34a;
+  border-radius: 25px;
+  background:
+    radial-gradient(ellipse at 50% 0%, #00efa31a, transparent 70%),
+    #09110c;
+  box-shadow: 0 25px 80px #00efa30a;
+}
+
+.join-icon {
+  font-size: 52px;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 0 25px #00efa355);
+}
+
+.join-section h2 {
+  font-size: clamp(24px, 4vw, 38px);
+  margin-bottom: 15px;
+}
+
+.join-section p {
+  max-width: 480px;
+  margin: 0 auto 25px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.join-button {
+  display: inline-flex;
+  padding: 17px 28px;
+  border-radius: 13px;
+  background: linear-gradient(120deg, #aaffd9, #00e89b);
+  color: #002b19;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 10px 40px #00efa330;
+  transition: .3s;
+}
+
+.join-button:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 50px #00efa34a;
+}
+
+.note {
+  margin-top: 18px;
+  font-size: 9px;
+  color: #718479;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 30px 7%;
+  border-top: 1px solid #ffffff12;
+  text-align: center;
+}
+
+footer strong {
+  font-size: 15px;
+}
+
+footer strong span {
+  color: var(--green);
+}
+
+footer p {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #73857a;
+  line-height: 1.8;
+}
+
+@media(max-width: 700px) {
+  nav {
+    height: 65px;
+    padding: 0 6%;
+  }
+
+  .logo {
+    font-size: 17px;
+  }
+
+  .nav-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 55px 6% 35px;
+    gap: 0;
+  }
+
+  h1 {
+    font-size: 46px;
+    letter-spacing: -2.5px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+
+  .visual {
+    min-height: 350px;
+    margin-top: 15px;
+  }
+
+  .orb {
+    width: 220px;
+    height: 220px;
+    border-radius: 53px;
+  }
+
+  .orb-symbol {
+    font-size: 85px;
+  }
+
+  .ring {
+    width: 290px;
+  }
+
+  .ring.two {
+    width: 340px;
+  }
+
+  .floating.one {
+    left: 0;
+    top: 20px;
+  }
+
+  .floating.two {
+    right: 0;
+    bottom: 20px;
+  }
+
+  .section {
+    width: 88%;
+    margin-bottom: 60px;
+  }
+
+  .glass {
+    padding: 23px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .info-card {
+    padding: 14px;
+  }
+
+  .join-section {
+    padding: 40px 18px;
+  }
+
+  .join-button {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+  <div class="logo">GRUPWA <span>3D</span></div>
+  <div class="nav-label">OFFICIAL COMMUNITY</div>
+</nav>
+
+<main>
+
+<section class="hero">
+
+  <div>
+    <div class="eyebrow">
+      <i></i>
+      YOUR COMMUNITY STARTS HERE
+    </div>
+
+    <h1>
+      Satu Grup.<br>
+      <span class="gradient">Banyak Cerita.</span>
+    </h1>
+
+    <p class="description">
+      Selamat datang di komunitas kami. Tempat berkumpulnya
+      orang-orang dengan minat yang sama, berbagi cerita,
+      bertukar informasi, dan membangun pertemanan baru.
+      Kenali komunitas kami sebelum bergabung!
+    </p>
+
+    <div class="buttons">
+      <a href="#tentang" class="btn btn-primary">
+        Kenali Komunitas ↓
+      </a>
+
+      <a href="#gabung" class="btn btn-secondary">
+        Gabung Sekarang ↗
+      </a>
+    </div>
+
+    <div class="features">
+      <span>✦ Satu Komunitas</span>
+      <span>✦ Satu Tujuan</span>
+      <span>✦ Banyak Teman</span>
+    </div>
+  </div>
+
+  <div class="visual">
+    <div class="ring"></div>
+    <div class="ring two"></div>
+
+    <div class="orb">
+      <div class="orb-symbol">✳</div>
+      <div class="orb-caption">ONE COMMUNITY</div>
+    </div>
+
+    <div class="floating one">
+      <strong>✦ COMMUNITY</strong>
+      <small>Tempat kita terhubung</small>
+    </div>
+
+    <div class="floating two">
+      <strong>♧ JOIN OUR GROUP</strong>
+      <small>Mulai cerita baru bersama</small>
+    </div>
+  </div>
+
+</section>
+
+<section class="section" id="tentang">
+
+  <div class="glass">
+
+    <div class="section-label">ABOUT OUR COMMUNITY</div>
+
+    <!-- GANTI NAMA GRUP DI SINI -->
+    <h2 id="groupName">✌︎︎ INNOCENT ⁹⁹🐾❀࿐</h2>
+
+    <!-- GANTI DESKRIPSI GRUP DI SINI -->
+    <p class="section-description" id="groupDescription">
+WARNING*🔞🚭
+
+(*PERATURAN SELAMA DI GRUP INI*)
+
+1. *DILARANG CAPER /PICKME*‼️
+2. *TOXIC SEWAJARNYA AJA (ADMIN)*❌
+3. *DILARANG PROMOSI GC LAIN*❕❗
+4. *GAK SOPAN DI KELUARKAN*✅
+5. *DILARANG NGIRIM VIDIO/FOTO 18++*🔞
+6. *KALO MAU KELUAR IZIN DULU DAN KASIH        ALASAN*✅
+7. *BOLEH CARI PACAR TAPI GAK BOLEH CARI SELINGKUHAN* ❌‼️
+8. *KALO MERASA DI KANCANGI HUBUNGI ADMIN*✅
+
+__________________________
+
+*INTRO ASLI GRUP*
+
+*ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚ 
+✌︎︎INNOCENT⁹⁹🐾❀࿐
+(Cari teman atau pacar 🫣)
+▶︎ •၊၊||၊|။||||။‌‌‌‌‌၊|• 0:10 𝜗ৎ
+
+💛🧡❤️♪• Namamu :             ❀࿐
+
+💚🩷💙♪• Gender.  :           𝄞⨾𓍢ִ໋
+
+🩵💜💗♪• Umur.    :             ✌︎︎
+
+💝💘💖♪• asal.      :               ✌︎︎
+
+♪• alasan apa kok mau masuk?   :
+
+____________________𝄞⨾𓍢ִ໋
+
+Sekian terima gaji🙏ᰔᩚ
+
+-*SEMOGA BETAH DI GRUP ✌︎︎INNOCENT⁹⁹🐾❀࿐*
+
+*🐾❀࿐WAJIB DI ISI MEMBER BARU UNTUK KITA BISA MENGENAL SATU SAMA LAIN🐾❀࿐*
+
+🌿*NAMA ADMIN 1: CECE* 🍃
+🍁*NAMA ADMIN 2: BELLA* 🍂
+🫧 *NAMA ADMIN 3: KANAYA*💦
+🌸 *NAMA ADMIN 4: AMMA*🌷
+*❣️SEKALI LAGI SEMOGA BETAH MEMBER BARU ❤️‍🔥* 
+
+𝄞⨾𓍢ִ໋ *ONCE AGAIN WELCOME TO THE GROUP*🍃
+*✌︎︎INNOCENT⁹⁹🐾❀࿐*
+_____________________
+
+*DIBACA DESKRIPSINYA DULU YAAA*👍🏻‼️
+
+__________________________
+*ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚ *ੈ✩‧₊˚༺☆༻*ੈ✩‧
+
+__________________
+
+🩷❤️🧡*NAMA ADMIN 1:* *Cece* 💟
+💛💚🩵*NAMA ADMIN 2:* *BELLA*💟
+💙💜🖤*NAMA ADMIN 3:* *KANAYA*💟
+🤎🖤🤍*NAMA ADMIN 4:* *AMMA*💟
+
+*ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚ *ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚ 
+__________________________
+
+*SEKIAN TRIMAKASIH*
+
+@ALL *SEMOGA BETAH*💗💖💘👌🏻
+    </p>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="icon">🌐</div>
+        <h3>Tentang Grup</h3>
+        <p>
+          Komunitas untuk saling mengenal, mencari informasi, mencari teman atau pacar juga bisa,
+          dan berdiskusi sesuai tujuan grup.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="icon">🤝</div>
+        <h3>Kebersamaan</h3>
+        <p>
+          Saling menghargai, menjaga kenyamanan,
+          dan membangun lingkungan komunitas yang positif.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="icon">💬</div>
+        <h3>Diskusi & Berbagi</h3>
+        <p>
+          Berbagi ide, bertukar pengalaman,
+          dan berinteraksi dengan anggota lainnya.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="icon">✨</div>
+        <h3>Jadilah Bagian Kami</h3>
+        <p>
+          Kenali peraturan grup dan pastikan kamu
+          ingin bergabung dengan komunitas ini.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="glass">
+
+    <div class="section-label">COMMUNITY GUIDELINES</div>
+
+    <h2>Peraturan Komunitas</h2>
+
+    <p class="section-description">
+      Agar semua anggota merasa nyaman, mari menjaga
+      komunitas ini bersama-sama.
+    </p>
+
+    <div class="rules">
+
+      <div class="rule">
+        <b>01</b>
+        <span>Hormati semua anggota dan hindari perkataan yang menghina.</span>
+      </div>
+
+      <div class="rule">
+        <b>02</b>
+        <span>Hindari spam, promosi berlebihan, dan pesan yang mengganggu.</span>
+      </div>
+
+      <div class="rule">
+        <b>03</b>
+        <span>Jangan membagikan informasi pribadi anggota tanpa izin.</span>
+      </div>
+
+      <div class="rule">
+        <b>04</b>
+        <span>Ikuti arahan admin dan gunakan grup sesuai tujuannya.</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="gabung">
+
+  <div class="join-section">
+
+    <div class="join-icon">✳</div>
+
+    <div class="section-label">YOUR INVITATION AWAITS</div>
+
+    <h2>Siap Menjadi Bagian <span class="gradient">Dari Kami?</span></h2>
+
+    <p>
+      Kamu sudah mengenal komunitas kami.
+      Sekarang waktunya bergabung dan mulai membangun
+      cerita bersama anggota lainnya.
+    </p>
+
+    <!--
+      GANTI LINK DI BAWAH INI DENGAN LINK GRUP WHATSAPP KAMU
+    -->
+
+    <a
+      class="join-button"
+      id="joinButton"
+      href="https://chat.whatsapp.com/LSgo9iExRpPFmPJjnQP1Zw?s=cl&p=a&mlu=4&ilr=4&iam=0"
+      target="_blank"
+      rel="noopener noreferrer">
+      💚 GABUNG GRUP WHATSAPP ↗
+    </a>
+
+    <div class="note">
+      Dengan bergabung, pastikan kamu bersedia mengikuti peraturan komunitas.
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  <strong>GRUPWA <span>3D</span></strong>
+  <p>
+    Satu komunitas, banyak cerita.<br>
+    © <span id="year"></span> Community. All rights reserved.
+  </p>
+</footer>
+
+<script>
+document.getElementById('year').textContent =
+  new Date().getFullYear();
+
+/* ANIMASI PARTIKEL */
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+let w, h;
+
+function resize() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  w = window.innerWidth;
+  h = window.innerHeight;
+
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  particles = Array.from(
+    { length: Math.min(65, Math.floor(w / 7)) },
+    () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.5 + .3,
+      v: Math.random() * .35 + .08,
+      a: Math.random() * .45 + .1
+    })
+  );
+}
+
+function animate() {
+  ctx.clearRect(0, 0, w, h);
+
+  for (const p of particles) {
+    p.y -= p.v;
+
+    if (p.y < 0) {
+      p.y = h;
+      p.x = Math.random() * w;
+    }
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+
+    ctx.fillStyle = `rgba(0,239,163,${p.a})`;
+    ctx.fill();
+  }
+
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', resize);
+
+resize();
+animate();
+
+/* PERINGATAN JIKA LINK BELUM DIGANTI */
+
+const joinButton = document.getElementById('joinButton');
+
+joinButton.addEventListener('click', function(event) {
+  if (this.href.includes('GANTI_DENGAN_LINK_GRUP_KAMU')) {
+    event.preventDefault();
+    alert('Ganti link contoh dengan link undangan grup WhatsApp kamu terlebih dahulu!');
+  }
+});
+</script>
+
+</body>
+</html>
